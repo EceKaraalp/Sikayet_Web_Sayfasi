@@ -1,0 +1,143 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şikayet Uygulaması - Ana Sayfa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: rgb(90, 73, 100);">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">
+        <img src="logoo.png" alt="" style="width: 100px; height: 55px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="loginbtn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Giriş Yap
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="login.html" onclick="selectUserType('musteri')">Müşteri</a>
+                    <a class="dropdown-item" href="login.html" onclick="selectUserType('firma')">Firma</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="prflBtn" href="profil.html">Profil Bilgisi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="firmalar.html">Firmalar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="sikayetbtn" href="sikayet-ekle.html">Şikayet Oluştur</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="sikayetokubtn" href="sikayet-ekle.html">Şikayetleri Oku</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="sikayetokubtn" href="sikayetoku.html">Şikayetleri Oku</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5" id="cevapVerContainer" style="display: none;">
+    <h2>Şikayet Detayları ve Cevap Ver</h2>
+    <div id="secilenSikayet" class="sikayet-detay">
+        <!-- Şikayet detayları buraya eklenecek -->
+    </div>
+    <form id="cevapForm">
+        <div class="form-group">
+            <label for="cevapText">Cevap:</label>
+            <textarea class="form-control" id="cevapText" rows="3" placeholder="Cevap Yazınız..."></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="cevapGonder()">Gönder</button>
+    </form>
+</div>
+
+<script>
+    var loginButton = document.getElementById('loginbtn');
+    var sikayetBtn = document.getElementById('sikayetbtn');
+    var giristipi = localStorage.getItem('userType');
+    var prflbuton = document.getElementById('prflBtn');
+    var islogged = localStorage.getItem('isLoggedIn');
+    var sikayetokuBtn = document.getElementById("sikayetokubtn");
+
+    if (islogged == 'true') {
+        loginButton.style.display = "none";
+        if (giristipi == "firma") {
+            sikayetBtn.style.display = "none";
+        } else {
+            sikayetokuBtn.style.display = "none";
+        }
+    } else {
+        sikayetokuBtn.style.display = "none";
+        sikayetBtn.style.display = "none"
+        prflbuton.style.display = "none";
+    }
+
+    // Sayfa yüklendiğinde çalışacak fonksiyon
+    window.onload = function () {
+        // Tıklanan şikayetin index değerini localStorage'den çek
+        var secilenSikayetIndex = localStorage.getItem('secilenSikayetIndex');
+
+        // Eğer index değeri varsa şikayet detaylarını göster
+        if (secilenSikayetIndex !== null) {
+            var mevcutSikayetler = JSON.parse(localStorage.getItem('sikayetler')) || [];
+            var secilenSikayet = mevcutSikayetler[secilenSikayetIndex];
+
+            var secilenSikayetContainer = document.getElementById('secilenSikayet');
+            secilenSikayetContainer.innerHTML = `
+                <h5>${secilenSikayet.baslik}</h5>
+                <p>Şikayet Açıklaması: ${secilenSikayet.aciklama}</p>
+                <p>Cevap: ${secilenSikayet.cevap || 'Henüz Cevap Verilmedi'}</p>
+            `;
+
+            // Cevap verme formunu göster
+            var cevapVerContainer = document.getElementById('cevapVerContainer');
+            cevapVerContainer.style.display = 'block';
+        } else {
+            // Eğer index değeri yoksa, kullanıcıyı başka bir sayfaya yönlendir veya uygun bir işlem yap
+            alert('Şikayet bulunamadı!');
+            // Örneğin:
+            window.location.href = 'index.html';
+        }
+    };
+
+    function cevapGonder() {
+        // Cevap gönderme işlemleri burada gerçekleştirilebilir
+        var cevapText = document.getElementById('cevapText').value;
+
+        if (cevapText.trim() !== "") {
+            // Tıklanan şikayete ait cevap bilgisini localStorage'deki öğeye ata
+            var mevcutSikayetler = JSON.parse(localStorage.getItem('sikayetler')) || [];
+            var secilenSikayetIndex = localStorage.getItem('secilenSikayetIndex');
+            mevcutSikayetler[secilenSikayetIndex].cevap = cevapText;
+            localStorage.setItem('sikayetler', JSON.stringify(mevcutSikayetler));
+
+            // Şikayetoku kısmındaki Cevap bilgisini güncelle
+            var cevapBilgisi = document.querySelector('.sikayet-detay p:last-child');
+            cevapBilgisi.textContent = 'Cevap: ' + cevapText;
+
+            alert("Cevap gönderme işlemi yapıldı");
+        } else {
+            alert("Lütfen bir cevap girin");
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

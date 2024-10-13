@@ -1,0 +1,31 @@
+body{
+    background:url(saydamimage.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#kolon{
+    background-color: rgb(198, 193, 206);
+    margin: 20px 10px 10px 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px   #080808;}
+#kolon img {
+    display: block;
+    margin: 0 auto;
+}
+#kolon h2 {
+    text-align: center;
+    color: #705181;
+}
+#kolon .list-group-item:hover {
+    background-color: #f8f9fa; /* Hover durumunda arka plan rengi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gölgelendirme efekti */
+}
+
+.list-group-item {
+    height: 50px; /* İhtiyaca göre yüksekliği ayarlayın */
+    margin-bottom: 10px; /* Boşluğu ihtiyaca göre ayarlayın */
+    border-radius: 10px;
+}
+.list-group{
+    border-radius: 10px;
+}

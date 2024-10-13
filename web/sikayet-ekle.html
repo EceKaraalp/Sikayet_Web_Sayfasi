@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şikayet Listesi</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: rgb(90, 73, 100);">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">
+        <img src="logoo.png" alt="" style="width: 100px; height: 55px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="loginbtn" href="login.html">Giriş Yap</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="profil.html">Profil Bilgisi</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="sikayet-ekle.html">Şikayet Oluştur</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="firmalar.html">Firmalar</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="row" style="width: 100%;">
+    <div class="container col-xl-5 mt-4">
+        <h2>Şikayet Ekle</h2>
+        <form id="sikayetForm">
+            <div class="form-group">
+                <label for="sikayetBaslik">Şikayet Başlığı:</label>
+                <input type="text" class="form-control" id="sikayetBaslik" placeholder="Şikayet Başlığı">
+            </div>
+            <div class="form-group">
+                <label for="sikayetAciklama">Şikayet Açıklaması:</label>
+                <textarea class="form-control" id="sikayetAciklama" rows="3" placeholder="Şikayet Açıklaması"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="firmaSecim">Firma Seçimi:</label>
+                <select class="form-control" id="firmaSecim">
+                    <option value="Mavi">Mavi</option>
+                    <option value="Vatan">Vatan</option>
+                    <option value="Trendyol">Trendyol</option>
+                    <option value="MediaMarkt">MediaMarkt</option>
+                    <option value="İçim">İçim</option>
+                    <option value="Milka">Milka</option>
+                    <option value="Çiçek Sepeti">Çiçek Sepeti</option>
+                    <option value="KFC">KFC</option>
+                    <option value="D&R">D&R</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="sikayetEkle()">Şikayet Ekle</button>
+        </form>
+    </div>    
+    <div class="container col-xl-5 mt-4">
+        <h1>Şikayet Listesi</h1>
+        <div class="form-group">
+            <label for="aramaInput">Şikayet Ara:</label>
+            <input type="text" class="form-control" id="aramaInput" placeholder="Şikayet Ara..."
+                oninput="aramaYap()">
+        </div>
+        <div style="max-height: 345px; overflow-y: auto;">
+            <ul id="sikayetListesi" class="list-group">
+            </ul>
+        </div>
+    </div>
+    
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function sil() {
+        localStorage.removeItem('sikayetler');
+        location.reload();
+    }
+
+    function aramaYap() {
+        var aramaInput = document.getElementById('aramaInput').value.toLowerCase();
+        var sikayetListesi = document.getElementById('sikayetListesi').getElementsByTagName('li');
+
+        for (var i = 0; i < sikayetListesi.length; i++) {
+            var sikayetBaslik = sikayetListesi[i].getElementsByTagName('h5')[0].innerText.toLowerCase();
+            if (sikayetBaslik.includes(aramaInput)) {
+                sikayetListesi[i].style.display = 'block';
+            } else {
+                sikayetListesi[i].style.display = 'none';
+            }
+        }
+    }
+
+    function sikayetEkle() {
+        var sikayetBaslik = document.getElementById('sikayetBaslik').value;
+        var sikayetAciklama = document.getElementById('sikayetAciklama').value;
+        var firmaSecim = document.getElementById('firmaSecim').value;
+
+        if (sikayetBaslik && sikayetAciklama) {
+            var yeniSikayet = {
+                baslik: sikayetBaslik,
+                aciklama: sikayetAciklama,
+                tarih: new Date().toLocaleDateString(),
+                durum: 'Açık',
+                firma: firmaSecim
+            };
+
+            var mevcutSikayetler = JSON.parse(localStorage.getItem('sikayetler')) || [];
+            mevcutSikayetler.push(yeniSikayet);
+            localStorage.setItem('sikayetler', JSON.stringify(mevcutSikayetler));
+
+            document.getElementById('sikayetBaslik').value = '';
+            document.getElementById('sikayetAciklama').value = '';
+
+            guncelleSikayetListesi();
+        } else {
+            alert('Şikayet başlığı ve açıklaması boş olamaz!');
+        }
+    }
+
+    function cevabiGoster(index) {
+        var mevcutSikayetler = JSON.parse(localStorage.getItem('sikayetler')) || [];
+        var secilenSikayet = mevcutSikayetler[index];
+
+        if (secilenSikayet.cevap) {
+            alert('Cevap: ' + secilenSikayet.cevap);
+        } else {
+            alert('Bu şikayete henüz bir cevap verilmemiştir.');
+        }
+    }
+
+    function guncelleSikayetListesi() {
+            var sikayetListesi = document.getElementById('sikayetListesi');
+            var mevcutSikayetler = JSON.parse(localStorage.getItem('sikayetler')) || [];
+            sikayetListesi.innerHTML = '';
+
+            mevcutSikayetler.forEach(function (sikayet, index) {
+                var yeniSikayet = document.createElement('li');
+                yeniSikayet.className = 'list-group-item';
+                yeniSikayet.innerHTML = `
+                    <h5 class="mb-1">${sikayet.baslik}</h5>
+                    <small>Şikayet Tarihi: ${sikayet.tarih}</small><br>
+                    <small>Şikayet Açıklaması: ${sikayet.aciklama}</small><br>
+                    <small>Şikayet Durumu: ${sikayet.durum}</small><br>
+                    <small>Firma: ${sikayet.firma}</small><br>
+                    <button type="button" class="btn btn-primary" onclick="cevabiGoster(${index})">${sikayet.cevap ? 'Cevabı Göster' : 'Cevap Bekleniyor'}</button>
+                    <button type="button" class="btn btn-warning" onclick="duzenleSikayet(${index})">Şikayeti Düzenle</button>
+                    <button type="button" class="btn btn-danger" onclick="silSikayet(${index})">Şikayeti Sil</button>
+                `;
+                sikayetListesi.appendChild(yeniSikayet);
+            });
+        }
+        function duzenleSikayet(index) {
+            var mevcutSikayetler = JSON.parse(localStorage.getItem('sikayetler')) || [];
+            var secilenSikayet = mevcutSikayetler[index];
+
+            var yeniBaslik = prompt('Yeni Şikayet Başlığı:', secilenSikayet.baslik);
+            var yeniAciklama = prompt('Yeni Şikayet Açıklaması:', secilenSikayet.aciklama);
+
+            if (yeniBaslik !== null && yeniAciklama !== null) {
+                secilenSikayet.baslik = yeniBaslik;
+                secilenSikayet.aciklama = yeniAciklama;
+                localStorage.setItem('sikayetler', JSON.stringify(mevcutSikayetler));
+                guncelleSikayetListesi();
+            }
+        }
+
+
+        function silSikayet(index) {
+            var mevcutSikayetler = JSON.parse(localStorage.getItem('sikayetler')) || [];
+            mevcutSikayetler.splice(index, 1);
+            localStorage.setItem('sikayetler', JSON.stringify(mevcutSikayetler));
+            guncelleSikayetListesi();
+        }
+    window.onload = function() {
+        guncelleSikayetListesi();
+    };
+
+    var loginButton = document.getElementById('loginbtn');
+    var prflbuton = document.getElementById('prflBtn');
+    var islogged = localStorage.getItem('isLoggedIn');
+
+    if (islogged == 'true') {
+        loginButton.style.display = "none";
+        if (giristipi == "firma") {
+            sikayetBtn.style.display = "none";
+        }
+    } else {
+        sikayetBtn.style.display = "none"
+        prflbuton.style.display = "none";
+    }
+    
+</script>
+
+</body>
+</html>

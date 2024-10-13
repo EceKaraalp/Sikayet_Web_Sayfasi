@@ -1,0 +1,17 @@
+body{
+    background:url(saydamimage.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#carouselExampleControls {
+    width: 70%;
+}
+
+#carouselExampleControls img {
+    width: 60px;
+    height: auto;
+}
+
+#kaydirbtn {
+    color: black;
+}

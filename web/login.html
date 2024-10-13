@@ -1,0 +1,143 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şikayet Uygulaması - Giriş</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">
+        <img src="logoo.png" alt="" style="width: 100px; height: 55px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Ana Sayfa</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Giriş Yap
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#" onclick="selectUserType('musteri')">Müşteri</a>
+                    <a class="dropdown-item" href="#" onclick="selectUserType('firma')">Firma</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="prflBtn" href="profil.html">Profil Bilgisi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="firmalar.html">Firmalar</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container mt-4" id="loginForm">
+    <div id="musteriGirisFormu">
+        <h1>Müşteri Girişi</h1>
+        <form>
+            <div class="form-group">
+                <label for="musteriEmail">Kullanıcı Adı:</label>
+                <input type="email" class="form-control" id="musteriEmail" placeholder="Kullanıcı Adı">
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="form-group">
+                <label for="musteriSifre">Şifre:</label>
+                <input type="password" class="form-control" id="musteriSifre" placeholder="Şifre">
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <div class="unutma-box">
+                <label><input type="checkbox">Beni Hatırla</label>
+                <a href="#">Şifreni mi unuttun?</a>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="login('musteri')">Giriş Yap</button>
+        </form>
+    </div>
+    <div id="firmaGirisFormu" style="display: none;">
+        <h1>Firma Girişi</h1>
+        <form>
+            <div class="form-group">
+                <label for="firmaAdi">Firma Adı:</label>
+                <input type="text" class="form-control" id="firmaAdi" placeholder="Firma Adı">
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="form-group">
+                <label for="firmaSifre">Şifre:</label>
+                <input type="password" class="form-control" id="firmaSifre" placeholder="Şifre">
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="login('firma')">Giriş Yap</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function selectUserType(userType) {
+        var musteriFormu = document.getElementById('musteriGirisFormu');
+        var firmaFormu = document.getElementById('firmaGirisFormu');
+        
+
+        if (userType === 'musteri') {
+            musteriFormu.style.display = 'block';
+            firmaFormu.style.display = 'none';
+        } else if (userType === 'firma') {
+            musteriFormu.style.display = 'none';
+            firmaFormu.style.display = 'block';
+        }
+    }
+
+    function login(userType) {
+        if (userType === 'musteri') {
+            var musteriEmail = document.getElementById('musteriEmail').value;
+            var musteriSifre = document.getElementById('musteriSifre').value;
+
+            // Giriş bilgileri doğru ise
+            if (musteriEmail == "user" && musteriSifre == "user") {
+                localStorage.setItem('userType', 'musteri');
+                localStorage.setItem('userEmail', musteriEmail);
+                window.location.href = 'index.html';
+            } else {
+                alert('Kullanıcı adı veya sifre yanlış.');
+            }
+        } else if (userType === 'firma') {
+            var firmaAdi = document.getElementById('firmaAdi').value;
+            var firmaSifre = document.getElementById('firmaSifre').value;
+
+            // Giriş bilgileri doğru ise
+            if (firmaAdi == "admin" && firmaSifre == "admin") {
+                localStorage.setItem('userType', 'firma');
+                localStorage.setItem('userFirmaAdi', firmaAdi);
+                window.location.href = 'index.html';
+            } else {
+                alert('Kullanıcı adı veya şifre yanlış.');
+            }
+        }
+        
+        localStorage.setItem('isLoggedIn','true');
+
+    }
+    var prflbuton = document.getElementById('prflBtn');
+    var islogged = localStorage.getItem('isLoggedIn');
+    if (islogged == 'true') {
+        prflbuton.style.display="block";
+    }   
+    else{
+        prflbuton.style.display="none";
+    }
+</script>
+
+</body>
+</html>

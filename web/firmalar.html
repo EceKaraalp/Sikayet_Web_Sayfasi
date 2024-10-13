@@ -1,0 +1,191 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şikayet Uygulaması - Ana Sayfa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="firma.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="index.html">
+      <img src="logoo.png" alt="" style="width: 100px; height: 55px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="loginbtn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Giriş Yap
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="login.html" onclick="selectUserType('musteri')">Müşteri</a>
+                    <a class="dropdown-item" href="login.html" onclick="selectUserType('firma')">Firma</a>
+                </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="prflBtn" href="profil.html">Profil Bilgisi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="sikayetbtn" href="sikayet-ekle.html">Şikayet Oluştur</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="sikayetokubtn" href="sikayetoku.html">Şikayetleri Oku</a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="firmalar.html">Firmalar</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="container marketing" style="padding-top: 100px;">
+  <div class="row">
+    <div id="kolon" class="col">
+      <img src="mediamarkt.jpg" alt="Açıklama yazısı" width="140" height="140" class="bd-placeholder-img rounded-circle">
+      <h2 class="fw-normal">Media Markt</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Toplam Şikayet Sayısı : 54.894</li>
+        <li class="list-group-item">Çözüm Oranı : %28</li>
+        <li class="list-group-item">Ortlama Çözüm Süresi : 14 İş Günü</li>
+      </ul>
+      <p><a class="btn btn-secondary gizlenecek" href="sikayet-ekle.html">Şikayet Oluştur »</a></p>
+    </div>
+
+    <div id="kolon" class="col">
+      <img src="icim.jpg" alt="Açıklama yazısı" width="140" height="140" class="bd-placeholder-img rounded-circle">
+      <h2 class="fw-normal">İçim</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Toplam Şikayet Sayısı : 2.458</li>
+        <li class="list-group-item">Çözüm Oranı : %45</li>
+        <li class="list-group-item">Ortlama Çözüm Süresi : 6 İş Günü</li>
+      </ul>
+      <p><a class="btn btn-secondary gizlenecek" href="sikayet-ekle.html">Şikayet Oluştur »</a></p>
+    </div>
+    
+    <div id="kolon" class="col">
+      <img src="mavi.jpg" alt="Açıklama yazısı" width="140" height="140" class="bd-placeholder-img rounded-circle">
+      <h2 class="fw-normal">Mavi</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Toplam Şikayet Sayısı : 2.485</li>
+        <li class="list-group-item">Çözüm Oranı : %65</li>
+        <li class="list-group-item">Ortlama Çözüm Süresi : 5 İş Günü</li>
+      </ul>
+      <p><a class="btn btn-secondary gizlenecek" href="sikayet-ekle.html">Şikayet Oluştur »</a></p>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div id="kolon" class="col">
+      <img src="milka.png" alt="Açıklama yazısı" width="140" height="140" class="bd-placeholder-img rounded-circle">
+      <h2 class="fw-normal">Milka</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Toplam Şikayet Sayısı : 4.654</li>
+        <li class="list-group-item">Çözüm Oranı : %62</li>
+        <li class="list-group-item">Ortlama Çözüm Süresi : 4 İş Günü</li>
+      </ul>
+      <p><a class="btn btn-secondary gizlenecek" href="sikayet-ekle.html">Şikayet Oluştur »</a></p>
+    </div>
+
+    <div id="kolon" class="col">
+      <img src="trendyol.jpg" alt="Açıklama yazısı" width="140" height="140" class="bd-placeholder-img rounded-circle">
+      <h2 class="fw-normal">Trendyol</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Toplam Şikayet Sayısı : 6.184</li>
+        <li class="list-group-item">Çözüm Oranı : %69</li>
+        <li class="list-group-item">Ortlama Çözüm Süresi : 3 İş Günü</li>
+      </ul>
+      <p><a class="btn btn-secondary gizlenecek" href="sikayet-ekle.html">Şikayet Oluştur »</a></p>
+    </div>
+    
+    <div id="kolon" class="col">
+      <img src="ciceksepeti.png" alt="Açıklama yazısı" width="140" height="140" class="bd-placeholder-img rounded-circle">
+      <h2 class="fw-normal">Çiçek Sepeti</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Toplam Şikayet Sayısı : 975</li>
+        <li class="list-group-item">Çözüm Oranı : %45</li>
+        <li class="list-group-item">Ortlama Çözüm Süresi : 3 İş Günü</li>
+      </ul>
+      <p><a class="btn btn-secondary gizlenecek" href="sikayet-ekle.html">Şikayet Oluştur »</a></p>
+    </div>
+  </div>
+  <div class="row">
+    <div id="kolon" class="col">
+      <img src="watsons.png" alt="Açıklama yazısı" width="140" height="140" class="bd-placeholder-img rounded-circle">
+      <h2 class="fw-normal">watsons</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Toplam Şikayet Sayısı : 1.654</li>
+        <li class="list-group-item">Çözüm Oranı : %62</li>
+        <li class="list-group-item">Ortlama Çözüm Süresi : 4 İş Günü</li>
+      </ul>
+      <p><a class="btn btn-secondary gizlenecek" href="sikayet-ekle.html">Şikayet Oluştur »</a></p>
+    </div>
+
+    <div id="kolon" class="col">
+      <img src="kfc.png" alt="Açıklama yazısı" width="140" height="140" class="bd-placeholder-img rounded-circle">
+      <h2 class="fw-normal">KFC</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Toplam Şikayet Sayısı : 12.785</li>
+        <li class="list-group-item">Çözüm Oranı : %25</li>
+        <li class="list-group-item">Ortlama Çözüm Süresi : 8 İş Günü</li>
+      </ul>
+      <p><a class="btn btn-secondary gizlenecek" href="sikayet-ekle.html">Şikayet Oluştur »</a></p>
+    </div>
+    
+    <div id="kolon" class="col">
+      <img src="dr.png" alt="Açıklama yazısı" width="140" height="140" class="bd-placeholder-img rounded-circle">
+      <h2 class="fw-normal">D&R</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Toplam Şikayet Sayısı : 4.185</li>
+        <li class="list-group-item">Çözüm Oranı : %35</li>
+        <li class="list-group-item">Ortlama Çözüm Süresi : 6 İş Günü</li>
+      </ul>
+      <p><a class="btn btn-secondary gizlenecek" href="sikayet-ekle.html">Şikayet Oluştur »</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  var loginButton = document.getElementById('loginbtn');
+
+  var sikayetBtn = document.getElementById('sikayetbtn');
+  var giristipi = localStorage.getItem('userType');
+  var sikayetokuBtn = document.getElementById("sikayetokubtn");
+  var prflbuton = document.getElementById('prflBtn');
+  var islogged = localStorage.getItem('isLoggedIn');
+  var gizlenecekler=document.getElementsByClassName('gizlenecek');
+
+  if (islogged == 'true') {
+          loginButton.style.display="none";
+          if(giristipi=="firma"){
+            sikayetBtn.style.display="none";
+            for(var i=0;i<gizlenecekler.length;i++){
+              gizlenecekler[i].style.display="none";
+            }
+          }
+          else{
+            sikayetokuBtn.style.display = "none";
+          }
+  }
+  else{
+      sikayetokuBtn.style.display = "none";
+      for(var i=0;i<gizlenecekler.length;i++){
+        gizlenecekler[i].style.display="none";}
+      sikayetBtn.style.display="none"
+      prflbuton.style.display="none";
+  }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!-- profil.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Şikayet Uygulaması - Profil Bilgisi</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="profil.css">
+</head>
+
+<body style="background-color: rgb(90, 73, 100);">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">
+      <img src="logoo.png" alt="" style="width: 100px; height: 55px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Ana Sayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="loginbtn" href="login.html">Giriş Yap</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profil.html">Profil Bilgisi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="firmalar.html">Firmalar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="sikayetbtn" href="sikayet-ekle.html">Şikayet Oluştur</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="sikayetokubtn" href="sikayetoku.html">Şikayetleri Oku</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="logout()">Çıkış Yap</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br><br>
+  <div class="container">
+    <div class="main-body">
+      <!-- /Breadcrumb -->
+
+      <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-column align-items-center text-center">
+                <img src="" id="avatarImage" alt="Admin" class="rounded-circle" width="150">
+                <div class="mt-3" style="height: 197px;">
+                  <h4 id="nametitle">John Doe</h4>
+                  <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                  <button class="btn btn-primary">Şifremi Değiştir</button>
+                  <button class="btn btn-outline-primary">Sorun mu yaşıyorsunuz ?</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-3 py-4">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-globe mr-2 icon-inline">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                    </path>
+                  </svg>Website</h6>
+                <span class="text-secondary">www.sikayetvar.com</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="31" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-twitter mr-2 icon-inline text-info">
+                    <path
+                      d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                    </path>
+                  </svg>Twitter</h6>
+                <span class="text-secondary">@sikayetvar</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="29" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-instagram mr-2 icon-inline text-danger">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>Instagram</h6>
+                <span class="text-secondary">@sikayetvar</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-facebook mr-2 icon-inline text-primary">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                  </svg>Facebook</h6>
+                <span class="text-secondary">@sikayetvar</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">İsim</h6>
+                </div>
+                <div id="fulnamediv" class="col-sm-9 text-secondary">
+                  Kenneth Valdez
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Email</h6>
+                </div>
+                <div id="emaildiv" class="col-sm-9 text-secondary">
+                  fip@jukmuh.al
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Telefon</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  (239) 816-9029
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Cep Telefonu</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  (320) 380-4539
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Adres</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  Bay Area, San Francisco, CA
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-12">
+                  <a class="btn btn-info " target="__blank" href="#">Düzenle</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row gutters-sm">
+            <div class="col-sm-12 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h6 id="istatistikbaslik" class="d-flex align-items-center mb-3">Kullanıcı İstatistikleriniz</h6>
+                  <small>Yapılan Şikayetler</small>
+                  <div class="progress mb-3" style="height: 5px ">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small>Çözüm Bulunanlar</small>
+                  <div class="progress mb-3" style="height: 5px">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small id="thirdsmall">10.000'den Fazla Görüntülenenler</small>
+                  <div class="progress mb-3" style="height: 5px">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small id="fourthsmall">Kullanıcı Yetkinliğiniz</small>
+                  <div class="progress mb-3" style="height: 5px">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Kullanıcı türünü kontrol et
+    var userType = localStorage.getItem('userType');
+    var userEmail = localStorage.getItem('userEmail');
+    var userFirmaAdi = localStorage.getItem('userFirmaAdi');
+    var loginStatus = localStorage.getItem("isLoggedIn");
+
+    // Profil bilgilerini göster
+    function showUserProfile() {
+      var avatarimage = document.getElementById('avatarImage');
+      var nameTitle = document.getElementById("nametitle");
+      var fulnameDiv = document.getElementById("fulnamediv");
+      var emailDiv = document.getElementById("emaildiv");
+      var istatistikBaslik = document.getElementById("istatistikbaslik");
+      var thirdSmall = document.getElementById("thirdsmall");
+      var fourthSmall = document.getElementById("fourthsmall");
+      if (userType == 'musteri' && userEmail) {
+        nameTitle.textContent = userEmail;
+        avatarimage.src = "userpp.jpg";
+        fulnameDiv.textContent = "Yusuf Kaya";
+        emailDiv.textContent = userEmail + "@gmail.com";
+      }
+      else if (userType == 'firma' && userFirmaAdi) {
+        nameTitle.textContent = userFirmaAdi;
+        avatarimage.src = "firmapp.jpg";
+        fulnameDiv.textContent = "Vatan Teknoloji AŞ";
+        emailDiv.textContent = userFirmaAdi + "@gmail.com";
+
+        istatistikBaslik.textContent = "Firma Verileriniz";
+        thirdSmall.textContent = "Müşteri Memnuniyeti";
+        fourthSmall.textContent = "Firma Saygınlığı";
+      }
+      else {
+        // Kullanıcı giriş yapmamışsa uyarı ver
+        alert('Lütfen giriş yapın.');
+        // Giriş sayfasına yönlendir
+        window.location.href = 'login.html';
+      }
+    }
+
+    // Çıkış yapma işlemi
+    function logout() {
+      localStorage.removeItem('userType');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userFirmaAdi');
+      // Giriş sayfasına yönlendir
+      localStorage.setItem('isLoggedIn', 'false');
+      window.location.href = 'login.html';
+
+    }
+    var loginButton = document.getElementById('loginbtn');
+
+
+    var sikayetBtn = document.getElementById('sikayetbtn');
+    var giristipi = localStorage.getItem('userType');
+    var sikayetokuBtn = document.getElementById("sikayetokubtn");
+
+    var prflbuton = document.getElementById('prflBtn');
+    var islogged = localStorage.getItem('isLoggedIn');
+    if (islogged == 'true') {
+      loginButton.style.display = "none";
+      if (giristipi == "firma") {
+        sikayetBtn.style.display = "none";
+      }
+      else {
+        sikayetokuBtn.style.display = "none";
+      }
+    }
+    else {
+      sikayetokuBtn.style.display = "none";
+      sikayetBtn.style.display = "none"
+      prflbuton.style.display = "none";
+    }
+
+    // Sayfa yüklendiğinde profil bilgilerini göster
+    window.onload = showUserProfile();
+  </script>
+
+</body>
+
+</html>
